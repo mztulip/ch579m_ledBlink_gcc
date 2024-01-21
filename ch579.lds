@@ -6,7 +6,7 @@ MEMORY
     RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 32K
 }
 
-_minimum_stack_size = 2048
+_minimum_stack_size = 2048;
 
 SECTIONS
 {
@@ -51,7 +51,7 @@ SECTIONS
 
     _estack = (ORIGIN(RAM) + LENGTH(RAM)) & 0xFFFFFFFC;
 
-      ASSERT(_ebss + _minimum_stack_size <= _estack,
+    ASSERT(_ebss + _minimum_stack_size <= _estack,
            "There is not enough space in RAM for stack.")
 
     PROVIDE(end = _ebss);
