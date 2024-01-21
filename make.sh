@@ -4,4 +4,9 @@ TOOLCHAIN_GCC=$TOOLCHAIN"gcc"
 echo $TOOLCHAIN_GCC
 
 # -c => Compile or assemble the source files, but do not link. 
-$TOOLCHAIN_GCC Main.c -I StdPeriphDriver/inc/ -I CMSIS/Include/ -c -o build/main.o
+# -fdata-sections
+#-ffunction-sections => Place each function or data item into its own section in the output file if the target supports arbitrary sections. The name of the function or the name of the data item determines the section’s name in the output file. 
+GCC_OPTIONS="-c -ffunction-sections -fdata-sections"
+INLCUDES="-I StdPeriphDriver/inc/ -I CMSIS/Include/"
+
+$TOOLCHAIN_GCC Main.c $INLCUDES  -o build/main.o $GCC_OPTIONS
