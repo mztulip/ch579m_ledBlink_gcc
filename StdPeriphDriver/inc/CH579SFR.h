@@ -120,13 +120,13 @@ typedef volatile unsigned long  *PUINT32V;
 #define PRINT(X...)
 #endif
 
-/* Calculate the byte offset of a field in a structure of type */
+/* Calculate the byte offset of a field in astruct __attribute__((__packed__)) ure of type */
 #define FIELD_OFFSET(Type, Field)    ((UINT16)&(((Type *)0)->Field))
 
-/* Calculate the size of a field in a structure of type */
+/* Calculate the size of a field in astruct __attribute__((__packed__)) ure of type */
 #define FIELD_SIZE(Type, Field)      (sizeof(((Type *)0)->Field))
 
-/* An expression that yields the type of a field in a struct */
+/* An expression that yields the type of a field in astruct __attribute__((__packed__))  */
 #define FIELD_TYPE(Type, Field)      (((Type *)0)->Field)
 
 /* Return the number of elements in a statically sized array */
@@ -1162,7 +1162,7 @@ extern "C" {
 #define  RB_LCD_BIAS        0x04                      // RW, LCD bias select:  0=1/2 bias,  1=1/3 bias
 #define  RB_LCD_DUTY        0x18                      // RW, LCD duty select:  00=1/2 duty,  01=1/3 duty,  10=1/4 duty
 #define  RB_LCD_SCAN_CLK    0x60                      // RW, LCD scan clock select: 00=256Hz, 01=512Hz, 10=1KHz, 11=128Hz
-#define  RB_LCD_V_SEL       0x80                      // RW, LCD drive voltage£º0=VIO33*100%(3.3V),1=VIO33*76%(2.5V)
+#define  RB_LCD_V_SEL       0x80                      // RW, LCD drive voltageï¿½ï¿½0=VIO33*100%(3.3V),1=VIO33*76%(2.5V)
 
 #define R32_LCD_RAM0        (*((PUINT32V)(0x40006004))) // RW, LCD driver data0, address 0-3
 #define R32_LCD_RAM1        (*((PUINT32V)(0x40006008))) // RW, LCD driver data1, address 4-7
@@ -1647,7 +1647,7 @@ extern "C" {
 extern "C" {
 #endif
 
-/*----- USB constant and structure define --------------------------------*/
+/*----- USB constant andstruct __attribute__((__packed__)) ure define --------------------------------*/
 
 /* USB PID */
 #ifndef USB_PID_SETUP
@@ -1793,7 +1793,7 @@ extern "C" {
 #endif
 
 #ifndef USB_DEVICE_ADDR
-#define USB_DEVICE_ADDR         0x02    /* Ä¬ÈÏµÄUSBÉè±¸µØÖ· */
+#define USB_DEVICE_ADDR         0x02    /* Ä¬ï¿½Ïµï¿½USBï¿½è±¸ï¿½ï¿½Ö· */
 #endif
 #ifndef DEFAULT_ENDP0_SIZE
 #define DEFAULT_ENDP0_SIZE      8       /* default maximum packet size for endpoint 0 */
@@ -1802,20 +1802,15 @@ extern "C" {
 #define MAX_PACKET_SIZE         64      /* maximum packet size */
 #endif
 #ifndef USB_BO_CBW_SIZE
-#define USB_BO_CBW_SIZE         0x1F    /* ÃüÁî¿éCBWµÄ×Ü³¤¶È */
-#define USB_BO_CSW_SIZE         0x0D    /* ÃüÁî×´Ì¬¿éCSWµÄ×Ü³¤¶È */
+#define USB_BO_CBW_SIZE         0x1F    /* ï¿½ï¿½ï¿½ï¿½ï¿½CBWï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ */
+#define USB_BO_CSW_SIZE         0x0D    /* ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½CSWï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ */
 #endif
 #ifndef USB_BO_CBW_SIG
-#define USB_BO_CBW_SIG          0x43425355    /* ÃüÁî¿éCBWÊ¶±ð±êÖ¾'USBC' */
-#define USB_BO_CSW_SIG          0x53425355    /* ÃüÁî×´Ì¬¿éCSWÊ¶±ð±êÖ¾'USBS' */
+#define USB_BO_CBW_SIG          0x43425355    /* ï¿½ï¿½ï¿½ï¿½ï¿½CBWÊ¶ï¿½ï¿½ï¿½Ö¾'USBC' */
+#define USB_BO_CSW_SIG          0x53425355    /* ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½CSWÊ¶ï¿½ï¿½ï¿½Ö¾'USBS' */
 #endif
 
-//#define __PACKED
-#ifndef __PACKED
-#define __PACKED                __packed
-#endif
-
-__PACKED typedef struct _USB_SETUP_REQ {
+typedef struct __attribute__((__packed__))  _USB_SETUP_REQ {
     UINT8 bRequestType;
     UINT8 bRequest;
     UINT16 wValue;
@@ -1824,7 +1819,7 @@ __PACKED typedef struct _USB_SETUP_REQ {
 } USB_SETUP_REQ, *PUSB_SETUP_REQ;
 
 
-__PACKED typedef struct _USB_DEVICE_DESCR {
+typedef struct __attribute__((__packed__))  _USB_DEVICE_DESCR {
     UINT8 bLength;
     UINT8 bDescriptorType;
     UINT16 bcdUSB;
@@ -1842,7 +1837,7 @@ __PACKED typedef struct _USB_DEVICE_DESCR {
 } USB_DEV_DESCR, *PUSB_DEV_DESCR;
 
 
-__PACKED typedef struct _USB_CONFIG_DESCR {
+typedef struct __attribute__((__packed__))  _USB_CONFIG_DESCR {
     UINT8 bLength;
     UINT8 bDescriptorType;
     UINT16 wTotalLength;
@@ -1854,7 +1849,7 @@ __PACKED typedef struct _USB_CONFIG_DESCR {
 } USB_CFG_DESCR, *PUSB_CFG_DESCR;
 
 
-__PACKED typedef struct _USB_INTERF_DESCR {
+typedef struct __attribute__((__packed__))  _USB_INTERF_DESCR {
     UINT8 bLength;
     UINT8 bDescriptorType;
     UINT8 bInterfaceNumber;
@@ -1867,7 +1862,7 @@ __PACKED typedef struct _USB_INTERF_DESCR {
 } USB_ITF_DESCR, *PUSB_ITF_DESCR;
 
 
-__PACKED typedef struct _USB_ENDPOINT_DESCR {
+typedef struct __attribute__((__packed__))  _USB_ENDPOINT_DESCR {
     UINT8 bLength;
     UINT8 bDescriptorType;
     UINT8 bEndpointAddress;
@@ -1877,7 +1872,7 @@ __PACKED typedef struct _USB_ENDPOINT_DESCR {
 } USB_ENDP_DESCR, *PUSB_ENDP_DESCR;
 
 
-__PACKED typedef struct _USB_CONFIG_DESCR_LONG {
+typedef struct __attribute__((__packed__))  _USB_CONFIG_DESCR_LONG {
     USB_CFG_DESCR   cfg_descr;
     USB_ITF_DESCR   itf_descr;
     USB_ENDP_DESCR  endp_descr[1];
@@ -1885,7 +1880,7 @@ __PACKED typedef struct _USB_CONFIG_DESCR_LONG {
 
 typedef USB_CFG_DESCR_LONG *PXUSB_CFG_DESCR_LONG;
 
-__PACKED typedef struct _USB_HUB_DESCR {
+typedef struct __attribute__((__packed__))  _USB_HUB_DESCR {
     UINT8 bDescLength;
     UINT8 bDescriptorType;
     UINT8 bNbrPorts;
@@ -1899,7 +1894,7 @@ __PACKED typedef struct _USB_HUB_DESCR {
 
 typedef USB_HUB_DESCR  *PXUSB_HUB_DESCR;
 
-__PACKED typedef struct _USB_HID_DESCR {
+typedef struct __attribute__((__packed__))  _USB_HID_DESCR {
     UINT8 bLength;
     UINT8 bDescriptorType;
     UINT16 bcdHID;
@@ -1913,7 +1908,7 @@ __PACKED typedef struct _USB_HID_DESCR {
 typedef USB_HID_DESCR *PXUSB_HID_DESCR;
 
 
-__PACKED typedef struct _UDISK_BOC_CBW { /* command of BulkOnly USB-FlashDisk */
+typedef struct __attribute__((__packed__))  _UDISK_BOC_CBW { /* command of BulkOnly USB-FlashDisk */
     UINT32 mCBW_Sig;
     UINT32 mCBW_Tag;
     UINT32 mCBW_DataLen;                /* uppest byte of data length, always is 0 */
@@ -1925,7 +1920,7 @@ __PACKED typedef struct _UDISK_BOC_CBW { /* command of BulkOnly USB-FlashDisk */
 
 typedef UDISK_BOC_CBW  *PXUDISK_BOC_CBW;
 
-__PACKED typedef struct _UDISK_BOC_CSW { /* status of BulkOnly USB-FlashDisk */
+typedef struct __attribute__((__packed__))  _UDISK_BOC_CSW { /* status of BulkOnly USB-FlashDisk */
     UINT32 mCSW_Sig;
     UINT32 mCSW_Tag;
     UINT32 mCSW_Residue;                /* return: remainder bytes */  /* uppest byte of remainder length, always is 0 */

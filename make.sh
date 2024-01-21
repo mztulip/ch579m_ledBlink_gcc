@@ -9,6 +9,10 @@ echo $TOOLCHAIN_GCC
 GCC_OPTIONS="-c -ffunction-sections -fdata-sections"
 INLCUDES="-I StdPeriphDriver/inc/ -I CMSIS/Include/"
 
-file1="$TOOLCHAIN_GCC Main.c $INLCUDES  -o build/main.o $GCC_OPTIONS"
+file1="$TOOLCHAIN_GCC Main.c $INLCUDES -o build/main.o $GCC_OPTIONS"
 echo $file1
 $file1
+
+file2="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_sys.c $INLCUDES -o build/CH57x_sys.o $GCC_OPTIONS"
+echo $file2
+$file2
