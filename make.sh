@@ -16,3 +16,7 @@ $file1
 file2="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_sys.c $INLCUDES -o build/CH57x_sys.o $GCC_OPTIONS"
 echo $file2
 $file2
+
+file3="$TOOLCHAIN_GCC startup.c $INLCUDES -o build/startup.o $GCC_OPTIONS"
+echo $file3
+$file3

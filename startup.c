@@ -36,6 +36,26 @@ WEAK void SVC_Handler(void);
 WEAK void DebugMon_Handler(void);
 WEAK void PendSV_Handler(void);
 WEAK void SysTick_Handler(void);
+WEAK void TMR0_IRQHandler(void);
+WEAK void GPIO_IRQHandler(void);
+WEAK void SLAVE_IRQHandler(void);
+WEAK void SPI0_IRQHandler(void);
+WEAK void BB_IRQHandler(void);
+WEAK void LLE_IRQHandler(void);
+WEAK void USB_IRQHandler(void);
+WEAK void ETH_IRQHandler(void);
+WEAK void TMR1_IRQHandler(void);
+WEAK void TMR2_IRQHandler(void);
+WEAK void UART0_IRQHandler(void);
+WEAK void UART1_IRQHandler(void);
+WEAK void RTC_IRQHandler(void);
+WEAK void ADC_IRQHandler(void);
+WEAK void SPI1_IRQHandler(void);
+WEAK void LED_IRQHandler(void);
+WEAK void TMR3_IRQHandler(void);
+WEAK void UART2_IRQHandler(void);
+WEAK void UART3_IRQHandler(void);
+WEAK void WDT_IRQHandler(void);
 
 __attribute__ ((section(".isr_vector")))
 void (* const interrupt_vectors[])(void) = {
