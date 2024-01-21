@@ -1,6 +1,8 @@
 #/bin/bash
 TOOLCHAIN="/home/tulip/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-"
 TOOLCHAIN_GCC=$TOOLCHAIN"gcc"
+TOOLCHAIN_SIZE=$TOOLCHAIN"size"
+TOOLCHAIN_OBJDUMP=$TOOLCHAIN"objdump"
 echo $TOOLCHAIN_GCC
 
 # -c => Compile or assemble the source files, but do not link. 
@@ -26,6 +28,18 @@ file4="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_clk.c $INLCUDES -o build/CH57x_clk.o
 echo $file4
 $file4
 
-linker="$TOOLCHAIN_GCC build/*.o -nostartfiles -Tch579.lds -Wl,--gc-sections -o output.elf"
+file5="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_gpio.c $INLCUDES -o build/CH57x_gpio.o $GCC_OPTIONS"
+echo $file5
+$file5
+
+file6="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_pwr.c $INLCUDES -o build/CH57x_pwr.o $GCC_OPTIONS"
+echo $file6
+$file6
+
+linker="$TOOLCHAIN_GCC build/*.o -nostartfiles -Tch579.lds -Wl,--gc-sections -o output.elf  -Xlinker -Map=output.map"
 echo $linker
 $linker
+
+$TOOLCHAIN_OBJDUMP -S --disassemble output.elf > output.asm
+
+$TOOLCHAIN_SIZE "output.elf"
