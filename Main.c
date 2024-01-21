@@ -5,6 +5,7 @@
 
 int main()
 {       
+	SystemInit();
 	/* PB0-LED */
 	GPIOB_ModeCfg( GPIO_Pin_0, GPIO_ModeOut_PP_20mA );
 	while(1)

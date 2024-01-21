@@ -6,7 +6,8 @@ echo $TOOLCHAIN_GCC
 # -c => Compile or assemble the source files, but do not link. 
 # -fdata-sections
 #-ffunction-sections => Place each function or data item into its own section in the output file if the target supports arbitrary sections. The name of the function or the name of the data item determines the section’s name in the output file. 
-GCC_OPTIONS="-c -ffunction-sections -fdata-sections"
+# -mthumb => Select between generating code that executes in ARM and Thumb states
+GCC_OPTIONS="-c -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m0"
 INLCUDES="-I StdPeriphDriver/inc/ -I CMSIS/Include/"
 
 file1="$TOOLCHAIN_GCC Main.c $INLCUDES -o build/main.o $GCC_OPTIONS"
@@ -24,3 +25,7 @@ $file3
 file4="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_clk.c $INLCUDES -o build/CH57x_clk.o $GCC_OPTIONS"
 echo $file4
 $file4
+
+linker="$TOOLCHAIN_GCC build/*.o -nostartfiles -Tch579.lds -Wl,--gc-sections -o output.elf"
+echo $linker
+$linker
