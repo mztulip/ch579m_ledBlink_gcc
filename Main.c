@@ -6,8 +6,7 @@
 int main()
 {       
 	SystemInit();
-	volatile int x =4;
-	x=6;
+
 	/* PB0-LED */
 	GPIOB_ModeCfg( GPIO_Pin_0, GPIO_ModeOut_PP_20mA );
 	while(1)

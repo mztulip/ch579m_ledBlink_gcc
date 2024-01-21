@@ -370,33 +370,32 @@ Disassembly of section .text:
 
 0000035c <main>:
  35c:	b580      	push	{r7, lr}
- 35e:	b082      	sub	sp, #8
- 360:	af00      	add	r7, sp, #0
- 362:	f7ff fe95 	bl	90 <SystemInit>
- 366:	2304      	movs	r3, #4
- 368:	607b      	str	r3, [r7, #4]
- 36a:	2306      	movs	r3, #6
- 36c:	607b      	str	r3, [r7, #4]
- 36e:	2104      	movs	r1, #4
- 370:	2001      	movs	r0, #1
- 372:	f7ff feed 	bl	150 <GPIOB_ModeCfg>
- 376:	2064      	movs	r0, #100	; 0x64
- 378:	f7ff ffce 	bl	318 <mDelaymS>
+ 35e:	af00      	add	r7, sp, #0
+ 360:	f7ff fe96 	bl	90 <SystemInit>
+ 364:	4b0c      	ldr	r3, [pc, #48]	; (398 <main+0x3c>)
+ 366:	2206      	movs	r2, #6
+ 368:	601a      	str	r2, [r3, #0]
+ 36a:	2104      	movs	r1, #4
+ 36c:	2001      	movs	r0, #1
+ 36e:	f7ff feef 	bl	150 <GPIOB_ModeCfg>
+ 372:	2064      	movs	r0, #100	; 0x64
+ 374:	f7ff ffd0 	bl	318 <mDelaymS>
+ 378:	4b08      	ldr	r3, [pc, #32]	; (39c <main+0x40>)
+ 37a:	681a      	ldr	r2, [r3, #0]
  37c:	4b07      	ldr	r3, [pc, #28]	; (39c <main+0x40>)
- 37e:	681a      	ldr	r2, [r3, #0]
- 380:	4b06      	ldr	r3, [pc, #24]	; (39c <main+0x40>)
- 382:	2101      	movs	r1, #1
- 384:	430a      	orrs	r2, r1
- 386:	601a      	str	r2, [r3, #0]
- 388:	2064      	movs	r0, #100	; 0x64
- 38a:	f7ff ffc5 	bl	318 <mDelaymS>
+ 37e:	2101      	movs	r1, #1
+ 380:	430a      	orrs	r2, r1
+ 382:	601a      	str	r2, [r3, #0]
+ 384:	2064      	movs	r0, #100	; 0x64
+ 386:	f7ff ffc7 	bl	318 <mDelaymS>
+ 38a:	4b05      	ldr	r3, [pc, #20]	; (3a0 <main+0x44>)
+ 38c:	681a      	ldr	r2, [r3, #0]
  38e:	4b04      	ldr	r3, [pc, #16]	; (3a0 <main+0x44>)
- 390:	681a      	ldr	r2, [r3, #0]
- 392:	4b03      	ldr	r3, [pc, #12]	; (3a0 <main+0x44>)
- 394:	2101      	movs	r1, #1
- 396:	430a      	orrs	r2, r1
- 398:	601a      	str	r2, [r3, #0]
- 39a:	e7ec      	b.n	376 <main+0x1a>
+ 390:	2101      	movs	r1, #1
+ 392:	430a      	orrs	r2, r1
+ 394:	601a      	str	r2, [r3, #0]
+ 396:	e7ec      	b.n	372 <main+0x16>
+ 398:	20000000 	.word	0x20000000
  39c:	400010c8 	.word	0x400010c8
  3a0:	400010cc 	.word	0x400010cc
 
@@ -447,9 +446,9 @@ Disassembly of section .text:
  3f6:	e7fe      	b.n	3f6 <Reset_Handler+0x4a>
  3f8:	20000000 	.word	0x20000000
  3fc:	00000420 	.word	0x00000420
- 400:	20000000 	.word	0x20000000
- 404:	20000000 	.word	0x20000000
- 408:	20000000 	.word	0x20000000
+ 400:	20000004 	.word	0x20000004
+ 404:	20000004 	.word	0x20000004
+ 408:	20000004 	.word	0x20000004
  40c:	00000170 	.word	0x00000170
  410:	0000019c 	.word	0x0000019c
  414:	000001c6 	.word	0x000001c6
