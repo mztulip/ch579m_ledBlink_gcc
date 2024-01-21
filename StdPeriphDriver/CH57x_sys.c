@@ -15,11 +15,11 @@
 
 /*******************************************************************************
 * Function Name  : SYS_GetInfoSta
-* Description    : »ñÈ¡µ±Ç°ÏµÍ³ÐÅÏ¢×´Ì¬
+* Description    : ï¿½ï¿½È¡ï¿½ï¿½Ç°ÏµÍ³ï¿½ï¿½Ï¢×´Ì¬
 * Input          : i: 
 					refer to SYS_InfoStaTypeDef
-* Return         : DISABLE  -  ¹Ø±Õ
-				   ENABLE   -  ¿ªÆô
+* Return         : DISABLE  -  ï¿½Ø±ï¿½
+				   ENABLE   -  ï¿½ï¿½ï¿½ï¿½
 *******************************************************************************/
 UINT8 SYS_GetInfoSta( SYS_InfoStaTypeDef i )
 {
@@ -31,7 +31,7 @@ UINT8 SYS_GetInfoSta( SYS_InfoStaTypeDef i )
 
 /*******************************************************************************
 * Function Name  : SYS_ResetExecute
-* Description    : Ö´ÐÐÏµÍ³Èí¼þ¸´Î»
+* Description    : Ö´ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»
 * Input          : None
 * Return         : None
 *******************************************************************************/
@@ -45,8 +45,8 @@ void SYS_ResetExecute( void )
 
 /*******************************************************************************
 * Function Name  : SYS_DisableAllIrq
-* Description    : ¹Ø±ÕËùÓÐÖÐ¶Ï£¬²¢±£Áôµ±Ç°ÖÐ¶ÏÖµ
-* Input          : pirqv£ºµ±Ç°±£ÁôÖÐ¶ÏÖµ
+* Description    : ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Ð¶ï¿½Öµ
+* Input          : pirqvï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Öµ
 * Return         : None
 *******************************************************************************/
 void SYS_DisableAllIrq( PUINT32 pirqv)
@@ -57,8 +57,8 @@ void SYS_DisableAllIrq( PUINT32 pirqv)
 
 /*******************************************************************************
 * Function Name  : SYS_RecoverIrq
-* Description    : »Ö¸´Ö®Ç°¹Ø±ÕµÄÖÐ¶ÏÖµ
-* Input          : irq_status£ºµ±Ç°±£ÁôÖÐ¶ÏÖµ
+* Description    : ï¿½Ö¸ï¿½Ö®Ç°ï¿½Ø±Õµï¿½ï¿½Ð¶ï¿½Öµ
+* Input          : irq_statusï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Öµ
 * Return         : None
 *******************************************************************************/
 void SYS_RecoverIrq( UINT32 irq_status )
@@ -68,9 +68,9 @@ void SYS_RecoverIrq( UINT32 irq_status )
 
 /*******************************************************************************
 * Function Name  : SYS_GetSysTickCnt
-* Description    : »ñÈ¡µ±Ç°ÏµÍ³(SYSTICK)¼ÆÊýÖµ
+* Description    : ï¿½ï¿½È¡ï¿½ï¿½Ç°ÏµÍ³(SYSTICK)ï¿½ï¿½ï¿½ï¿½Öµ
 * Input          : None
-* Return         : µ±Ç°¼ÆÊýÖµ
+* Return         : ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Öµ
 *******************************************************************************/
 uint32_t SYS_GetSysTickCnt( void )
 {
@@ -79,8 +79,8 @@ uint32_t SYS_GetSysTickCnt( void )
 
 /*******************************************************************************
 * Function Name  : WWDG_ITCfg
-* Description    : ¿´ÃÅ¹·¶¨Ê±Æ÷Òç³öÖÐ¶ÏÊ¹ÄÜ
-* Input          : DISABLE-Òç³ö²»ÖÐ¶Ï      ENABLE-Òç³öÖÐ¶Ï
+* Description    : ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ê¹ï¿½ï¿½
+* Input          : DISABLE-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½      ENABLE-ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 * Return         : None
 *******************************************************************************/
 void  WWDG_ITCfg( UINT8 s )
@@ -94,8 +94,8 @@ void  WWDG_ITCfg( UINT8 s )
 
 /*******************************************************************************
 * Function Name  : WWDG_ResetCfg
-* Description    : ¿´ÃÅ¹·¶¨Ê±Æ÷¸´Î»¹¦ÄÜ
-* Input          : DISABLE-Òç³ö²»¸´Î»      ENABLE-Òç³öÏµÍ³¸´Î»
+* Description    : ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½
+* Input          : DISABLE-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»      ENABLE-ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Î»
 * Return         : None
 *******************************************************************************/
 void WWDG_ResetCfg( UINT8 s )
@@ -109,7 +109,7 @@ void WWDG_ResetCfg( UINT8 s )
 
 /*******************************************************************************
 * Function Name  : WWDG_ClearFlag
-* Description    : Çå³ý¿´ÃÅ¹·ÖÐ¶Ï±êÖ¾£¬ÖØÐÂ¼ÓÔØ¼ÆÊýÖµÒ²¿ÉÇå³ý
+* Description    : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½Ð¶Ï±ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ÖµÒ²ï¿½ï¿½ï¿½ï¿½ï¿½
 * Input          : None
 * Return         : None
 *******************************************************************************/
@@ -124,8 +124,8 @@ void WWDG_ClearFlag( void )
 
 /*******************************************************************************
 * Function Name  : mDelayuS
-* Description    : uS ÑÓÊ±
-* Input          : t: Ê±¼ä²ÎÊý
+* Description    : uS ï¿½ï¿½Ê±
+* Input          : t: Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
 * Return         : None
 *******************************************************************************/
 void mDelayuS( UINT16 t )
@@ -136,25 +136,25 @@ void mDelayuS( UINT16 t )
     {
 
 #if     (FREQ_SYS == 40000000)	
-    for(i=0; i<4; i++)		__nop();
+    for(i=0; i<4; i++)		asm("nop");
 
 #elif       (FREQ_SYS == 32000000)		
     i = 2;
-    while(i--)	{ __nop();	__nop(); }		
+    while(i--)	{ asm("nop");	asm("nop"); }		
 
 #elif       (FREQ_SYS == 24000000)		
     i = 1;
-    while(i--)	{ __nop();	__nop(); }
+    while(i--)	{ asm("nop");	asm("nop"); }
 
  #elif       (FREQ_SYS == 20000000)		
-    for(i=0; i<1; i++)		__nop();
+    for(i=0; i<1; i++)		asm("nop");
 
  #elif       (FREQ_SYS == 16000000)			
-    __nop(); __nop();	__nop(); __nop();
-    __nop(); __nop();   __nop(); __nop(); __nop();
+    asm("nop"); asm("nop");	asm("nop"); asm("nop");
+    asm("nop"); asm("nop");   asm("nop"); asm("nop"); asm("nop");
 
 #elif       (FREQ_SYS == 8000000)		
-    __nop(); __nop();
+    asm("nop"); asm("nop");
     
 #endif			
     
@@ -163,8 +163,8 @@ void mDelayuS( UINT16 t )
 
 /*******************************************************************************
 * Function Name  : mDelaymS
-* Description    : mS ÑÓÊ±
-* Input          : t: Ê±¼ä²ÎÊý
+* Description    : mS ï¿½ï¿½Ê±
+* Input          : t: Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
 * Return         : None
 *******************************************************************************/
 void mDelaymS( UINT16 t )
@@ -180,17 +180,17 @@ void mDelaymS( UINT16 t )
 int fputc( int c, FILE *f )
 {
 #if  DEBUG == Debug_UART0
-  while( R8_UART0_TFC == UART_FIFO_SIZE );                        /* µÈ´ýÊý¾Ý·¢ËÍ */
-  R8_UART0_THR = c;                                               /* ·¢ËÍÊý¾Ý */
+  while( R8_UART0_TFC == UART_FIFO_SIZE );                        /* ï¿½È´ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ */
+  R8_UART0_THR = c;                                               /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #elif DEBUG == Debug_UART1       
-  while( R8_UART1_TFC == UART_FIFO_SIZE );                        /* µÈ´ýÊý¾Ý·¢ËÍ */
-  R8_UART1_THR = c;                                               /* ·¢ËÍÊý¾Ý */
+  while( R8_UART1_TFC == UART_FIFO_SIZE );                        /* ï¿½È´ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ */
+  R8_UART1_THR = c;                                               /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #elif DEBUG == Debug_UART2       
-  while( R8_UART2_TFC == UART_FIFO_SIZE );                        /* µÈ´ýÊý¾Ý·¢ËÍ */
-  R8_UART2_THR = c;                                               /* ·¢ËÍÊý¾Ý */
+  while( R8_UART2_TFC == UART_FIFO_SIZE );                        /* ï¿½È´ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ */
+  R8_UART2_THR = c;                                               /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #elif DEBUG == Debug_UART3       
-  while( R8_UART3_TFC == UART_FIFO_SIZE );                        /* µÈ´ýÊý¾Ý·¢ËÍ */
-  R8_UART3_THR = c;                                               /* ·¢ËÍÊý¾Ý */
+  while( R8_UART3_TFC == UART_FIFO_SIZE );                        /* ï¿½È´ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ */
+  R8_UART3_THR = c;                                               /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #endif
   return( c );
 }
