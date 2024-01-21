@@ -12,9 +12,10 @@
 
 #include "CH57x_common.h"
 
+
 /*******************************************************************************
 * Function Name  : SystemInit
-* Description    : ÏµÍ³Ê±ÖÓÄ¬ÈÏ³õÊ¼»¯
+* Description    : ÏµÍ³Ê±ï¿½ï¿½Ä¬ï¿½Ï³ï¿½Ê¼ï¿½ï¿½
 * Input          : None			   				
 * Return         : None
 *******************************************************************************/
@@ -44,13 +45,13 @@ void SystemInit(void)
     R8_SAFE_ACCESS_SIG = 0;
     
     mDelayuS(10);
-    /* ¿ªÆôµçÑ¹¼à¿Ø */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ */
     PowerMonitor( ENABLE );
 }
 
 /*******************************************************************************
 * Function Name  : SYS_ClkXT32MPon
-* Description    : ´ò¿ªÍâ²¿32MHzÕñµ´Æ÷µçÔ´²¢µÈ´ýÆäÎÈ¶¨
+* Description    : ï¿½ï¿½ï¿½â²¿32MHzï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½È¶ï¿½
 * Input          : None			   				
 * Return         : None
 *******************************************************************************/
@@ -63,17 +64,17 @@ void SYS_ClkXT32MPon(void)
     R8_HFCK_PWR_CTRL |= RB_CLK_XT32M_PON;
     R8_SAFE_ACCESS_SIG = 0;
 
-    /* ÒÔ40MHzÊ±ÖÓ¼ÆËã1200usÑÓÊ±Ê±¼ä */
+    /* ï¿½ï¿½40MHzÊ±ï¿½Ó¼ï¿½ï¿½ï¿½1200usï¿½ï¿½Ê±Ê±ï¿½ï¿½ */
     for (i = 0; i < 1200; i++) {
         for (j = 0; j < 4; j++) {
-            __nop();
+            asm("nop");
         }
     }
 }
 
 /*******************************************************************************
 * Function Name  : SYS_ClkXT32MPon
-* Description    : ´ò¿ªÄÚ²¿32MHzÕñµ´Æ÷µçÔ´²¢µÈ´ýÆäÎÈ¶¨
+* Description    : ï¿½ï¿½ï¿½Ú²ï¿½32MHzï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½È¶ï¿½
 * Input          : None			   				
 * Return         : None
 *******************************************************************************/
@@ -86,15 +87,15 @@ void SYS_ClkINT32MPon(void)
     R8_HFCK_PWR_CTRL |= RB_CLK_INT32M_PON;
     R8_SAFE_ACCESS_SIG = 0;
 
-    /* ÒÔ40MHzÊ±ÖÓ¼ÆËã1usÑÓÊ±Ê±¼ä */
+    /* ï¿½ï¿½40MHzÊ±ï¿½Ó¼ï¿½ï¿½ï¿½1usï¿½ï¿½Ê±Ê±ï¿½ï¿½ */
     for (i = 0; i < 4; i++) {
-        __nop();
+        asm("nop");
     }
 }
 
 /*******************************************************************************
 * Function Name  : SYS_ClkXT32MPon
-* Description    : ´ò¿ªPLLµçÔ´²¢µÈ´ýÆäÎÈ¶¨
+* Description    : ï¿½ï¿½PLLï¿½ï¿½Ô´ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½È¶ï¿½
 * Input          : None			   				
 * Return         : None
 *******************************************************************************/
@@ -107,17 +108,17 @@ void SYS_PLLPon(void)
     R8_HFCK_PWR_CTRL |= RB_CLK_PLL_PON;
     R8_SAFE_ACCESS_SIG = 0;  
 
-    /* ÒÔ40MHzÊ±ÖÓ¼ÆËã3000usÑÓÊ±Ê±¼ä */
+    /* ï¿½ï¿½40MHzÊ±ï¿½Ó¼ï¿½ï¿½ï¿½3000usï¿½ï¿½Ê±Ê±ï¿½ï¿½ */
     for (i = 0; i < 3000; i++) {
         for (j = 0; j < 4; j++) {
-            __nop();
+            asm("nop");
         }
     }
 }
 /*******************************************************************************
 * Function Name  : SetSysClock
-* Description    : ÖØÉèÏµÍ³ÔËÐÐÊ±ÖÓ
-* Input          : sc: ÏµÍ³Ê±ÖÓÔ´Ñ¡Ôñ
+* Description    : ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+* Input          : sc: ÏµÍ³Ê±ï¿½ï¿½Ô´Ñ¡ï¿½ï¿½
 					refer to SYS_CLKTypeDef
 * Return         : None
 *******************************************************************************/
@@ -195,7 +196,7 @@ void SetSysClock(SYS_CLKTypeDef sc)
             R8_HFCK_PWR_CTRL &= ~RB_CLK_XT32M_PON;
             break;
         case CLK_SOURCE_PLL_40MHz:
-            /* PLLÄ¬ÈÏÊ¹ÓÃÍâ²¿32MHzÊ±ÖÓÔ´±¶Æµ */
+            /* PLLÄ¬ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½â²¿32MHzÊ±ï¿½ï¿½Ô´ï¿½ï¿½Æµ */
             if (!SYS_IsClkXT32MPon()) {
                 SYS_ClkXT32MPon();
             }
@@ -209,7 +210,7 @@ void SetSysClock(SYS_CLKTypeDef sc)
             R16_CLK_SYS_CFG = RB_CLK_OSC32M_XT | (1 << 6) | 12;
             break;
         case CLK_SOURCE_PLL_32MHz:
-            /* PLLÄ¬ÈÏÊ¹ÓÃÍâ²¿32MHzÊ±ÖÓÔ´±¶Æµ */
+            /* PLLÄ¬ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½â²¿32MHzÊ±ï¿½ï¿½Ô´ï¿½ï¿½Æµ */
             if (!SYS_IsClkXT32MPon()) {
                 SYS_ClkXT32MPon();
             }
@@ -223,7 +224,7 @@ void SetSysClock(SYS_CLKTypeDef sc)
             R16_CLK_SYS_CFG = RB_CLK_OSC32M_XT | (1 << 6) | 15;
             break;
         case CLK_SOURCE_PLL_24MHz:
-            /* PLLÄ¬ÈÏÊ¹ÓÃÍâ²¿32MHzÊ±ÖÓÔ´±¶Æµ */
+            /* PLLÄ¬ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½â²¿32MHzÊ±ï¿½ï¿½Ô´ï¿½ï¿½Æµ */
             if (!SYS_IsClkXT32MPon()) {
                 SYS_ClkXT32MPon();
             }
@@ -237,7 +238,7 @@ void SetSysClock(SYS_CLKTypeDef sc)
             R16_CLK_SYS_CFG = RB_CLK_OSC32M_XT | (1 << 6) | 20;
             break;
         case CLK_SOURCE_PLL_20MHz:
-            /* PLLÄ¬ÈÏÊ¹ÓÃÍâ²¿32MHzÊ±ÖÓÔ´±¶Æµ */
+            /* PLLÄ¬ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½â²¿32MHzÊ±ï¿½ï¿½Ô´ï¿½ï¿½Æµ */
             if (!SYS_IsClkXT32MPon()) {
                 SYS_ClkXT32MPon();
             }
@@ -251,7 +252,7 @@ void SetSysClock(SYS_CLKTypeDef sc)
             R16_CLK_SYS_CFG = RB_CLK_OSC32M_XT | (1 << 6) | 24;
             break;
         case CLK_SOURCE_PLL_16MHz:
-            /* PLLÄ¬ÈÏÊ¹ÓÃÍâ²¿32MHzÊ±ÖÓÔ´±¶Æµ */
+            /* PLLÄ¬ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½â²¿32MHzÊ±ï¿½ï¿½Ô´ï¿½ï¿½Æµ */
             if (!SYS_IsClkXT32MPon()) {
                 SYS_ClkXT32MPon();
             }
@@ -272,7 +273,7 @@ void SetSysClock(SYS_CLKTypeDef sc)
 
 /*******************************************************************************
 * Function Name  : GetSysClock
-* Description    : »ñÈ¡µ±Ç°ÏµÍ³Ê±ÖÓ
+* Description    : ï¿½ï¿½È¡ï¿½ï¿½Ç°ÏµÍ³Ê±ï¿½ï¿½
 * Input          : None
 * Return         : Hz
 *******************************************************************************/
@@ -281,26 +282,26 @@ UINT32 GetSysClock( void )
 	UINT16  rev;
 	
 	rev = R16_CLK_SYS_CFG & 0xff;		
-	if( (rev & RB_CLK_SYS_MOD) == (2<<6) ){				// 32M×öÖ÷Æµ
+	if( (rev & RB_CLK_SYS_MOD) == (2<<6) ){				// 32Mï¿½ï¿½ï¿½ï¿½Æµ
 	    return (32000000);
 	}
-	else if( (rev & RB_CLK_SYS_MOD) == (1<<6) ){		// PLL½øÐÐ·ÖÆµ
+	else if( (rev & RB_CLK_SYS_MOD) == (1<<6) ){		// PLLï¿½ï¿½ï¿½Ð·ï¿½Æµ
 	    return (480000000/(rev&0x1f));		
 	}
-	else if( (rev & RB_CLK_SYS_MOD) == (0<<6) ){		// 32M½øÐÐ·ÖÆµ
+	else if( (rev & RB_CLK_SYS_MOD) == (0<<6) ){		// 32Mï¿½ï¿½ï¿½Ð·ï¿½Æµ
 		return (32000000/(rev&0x1f));	
 	}
-	else {												// 32K×öÖ÷Æµ
+	else {												// 32Kï¿½ï¿½ï¿½ï¿½Æµ
 		return (32000);
 	}	
 }
 
 /*******************************************************************************
 * Function Name  : HClk32M_Select
-* Description    : 32M ¸ßÆµÊ±ÖÓÀ´Ô´
+* Description    : 32M ï¿½ï¿½ÆµÊ±ï¿½ï¿½ï¿½ï¿½Ô´
 * Input          : hc: 
-					Clk32M_HSI   -   Ñ¡ÔñÄÚ²¿32M
-					Clk32M_HSE   -   Ñ¡ÔñÍâ²¿32M
+					Clk32M_HSI   -   Ñ¡ï¿½ï¿½ï¿½Ú²ï¿½32M
+					Clk32M_HSE   -   Ñ¡ï¿½ï¿½ï¿½â²¿32M
 * Return         : None
 *******************************************************************************/
 void HClk32M_Select( HClk32MTypeDef hc)
@@ -316,10 +317,10 @@ void HClk32M_Select( HClk32MTypeDef hc)
 
 /*******************************************************************************
 * Function Name  : LClk32k_PON
-* Description    : 32K µÍÆµÕñµ´Æ÷µçÔ´¿ØÖÆ
+* Description    : 32K ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
 * Input          : hc: 
-					Clk32K_LSI   -   Ñ¡ÔñÄÚ²¿32K
-					Clk32K_LSE   -   Ñ¡ÔñÍâ²¿32K
+					Clk32K_LSI   -   Ñ¡ï¿½ï¿½ï¿½Ú²ï¿½32K
+					Clk32K_LSE   -   Ñ¡ï¿½ï¿½ï¿½â²¿32K
 * Return         : None
 *******************************************************************************/
 void LClk32k_Power(LClk32KTypeDef hc, bool enable)
@@ -358,10 +359,10 @@ void LClk32k_Power(LClk32KTypeDef hc, bool enable)
 
 /*******************************************************************************
 * Function Name  : LClk32K_Select
-* Description    : 32K µÍÆµÊ±ÖÓÀ´Ô´
+* Description    : 32K ï¿½ï¿½ÆµÊ±ï¿½ï¿½ï¿½ï¿½Ô´
 * Input          : hc: 
-					Clk32K_LSI   -   Ñ¡ÔñÄÚ²¿32K
-					Clk32K_LSE   -   Ñ¡ÔñÍâ²¿32K
+					Clk32K_LSI   -   Ñ¡ï¿½ï¿½ï¿½Ú²ï¿½32K
+					Clk32K_LSE   -   Ñ¡ï¿½ï¿½ï¿½â²¿32K
 * Return         : None
 *******************************************************************************/
 void LClk32K_Select( LClk32KTypeDef hc)
@@ -380,7 +381,7 @@ void LClk32K_Select( LClk32KTypeDef hc)
 
 /*******************************************************************************
 * Function Name  : HSECFG_Current
-* Description    : HSE¾§Ìå Æ«ÖÃµçÁ÷ÅäÖÃ
+* Description    : HSEï¿½ï¿½ï¿½ï¿½ Æ«ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * Input          : c: 75%,100%,125%,150%
 * Return         : None
 *******************************************************************************/
@@ -399,7 +400,7 @@ void HSECFG_Current( HSECurrentTypeDef c )
 
 /*******************************************************************************
 * Function Name  : HSECFG_Capacitance
-* Description    : HSE¾§Ìå ¸ºÔØµçÈÝÅäÖÃ
+* Description    : HSEï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * Input          : c: refer to HSECapTypeDef
 * Return         : None
 *******************************************************************************/
@@ -418,7 +419,7 @@ void HSECFG_Capacitance( HSECapTypeDef c )
 
 /*******************************************************************************
 * Function Name  : LSECFG_Current
-* Description    : LSE¾§Ìå Æ«ÖÃµçÁ÷ÅäÖÃ
+* Description    : LSEï¿½ï¿½ï¿½ï¿½ Æ«ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * Input          : c: 70%,100%,140%,200%
 * Return         : None
 *******************************************************************************/
@@ -437,7 +438,7 @@ void LSECFG_Current( LSECurrentTypeDef c )
 
 /*******************************************************************************
 * Function Name  : LSECFG_Capacitance
-* Description    : LSE¾§Ìå ¸ºÔØµçÈÝÅäÖÃ
+* Description    : LSEï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * Input          : c: refer to LSECapTypeDef
 * Return         : None
 *******************************************************************************/
@@ -455,9 +456,9 @@ void LSECFG_Capacitance( LSECapTypeDef c )
 }
 /*******************************************************************************
 * Function Name  : Calibration_LSI
-* Description    : Ð£×¼ÄÚ²¿32KÊ±ÖÓ
+* Description    : Ð£×¼ï¿½Ú²ï¿½32KÊ±ï¿½ï¿½
 * Input          : None
-* Return         : Îó²î£ºÇ§·ÖÖ®£¨µ¥Î»£©
+* Return         : ï¿½ï¿½î£ºÇ§ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 *******************************************************************************/
 // 0-26030Hz    1023-44220Hz
 UINT16 Calibration_LSI( void )
@@ -470,29 +471,29 @@ UINT16 Calibration_LSI( void )
 	signed short   diff_1, diff_2, diffc;
     UINT8  k=0;
     
-    /* ¸ù¾Ýµ±Ç°Ê±ÖÓ»ñÈ¡±ê³ÆÖµºÍÐ±ÂÊ£¨T-step£© */
+    /* ï¿½ï¿½ï¿½Ýµï¿½Ç°Ê±ï¿½Ó»ï¿½È¡ï¿½ï¿½ï¿½Öµï¿½ï¿½Ð±ï¿½Ê£ï¿½T-stepï¿½ï¿½ */
     rev = R16_CLK_SYS_CFG & 0xff;	
     // CNT_STEP_K=Fsys*5*(1/26030 - 1/44220)/1023;
-	if( (rev & RB_CLK_SYS_MOD) == (2<<6) ){				// 32M×öÖ÷Æµ
+	if( (rev & RB_CLK_SYS_MOD) == (2<<6) ){				// 32Mï¿½ï¿½ï¿½ï¿½Æµ
 	    calv = ((5*32000000+(CAB_LSIFQ>>1))/CAB_LSIFQ);
         CNT_STEP_K = -3;
 	}
-	else if( (rev & RB_CLK_SYS_MOD) == (1<<6) ){		// PLL½øÐÐ·ÖÆµ
+	else if( (rev & RB_CLK_SYS_MOD) == (1<<6) ){		// PLLï¿½ï¿½ï¿½Ð·ï¿½Æµ
 	    calv = (((UINT32)5*480000000/(rev&0x1f)+(CAB_LSIFQ>>1))/CAB_LSIFQ);		
         CNT_STEP_K =( -37-((rev&0x1f)-1))/(rev&0x1f);
 	}
-	else if( (rev & RB_CLK_SYS_MOD) == (0<<6) ){		// 32M½øÐÐ·ÖÆµ
+	else if( (rev & RB_CLK_SYS_MOD) == (0<<6) ){		// 32Mï¿½ï¿½ï¿½Ð·ï¿½Æµ
 		calv = ((5*32000000/(rev&0x1f)+(CAB_LSIFQ>>1))/CAB_LSIFQ);	
         CNT_STEP_K = ( -3-((rev&0x1f)-1))/(rev&0x1f);
 	}
-	else {												// 32K×öÖ÷Æµ
+	else {												// 32Kï¿½ï¿½ï¿½ï¿½Æµ
 		calv = (5);
         CNT_STEP_K = 0;
 	}
     
 	/* Ð£×¼ */
-	basev = ( calv &0xfff );			        // »ñÈ¡Ð£×¼±ê³ÆÖµ    
-	// loc = 1023*(f-26030)/f/((44220-26030)/44220)  ¾­ÑéÇúÏß
+	basev = ( calv &0xfff );			        // ï¿½ï¿½È¡Ð£×¼ï¿½ï¿½ï¿½Öµ    
+	// loc = 1023*(f-26030)/f/((44220-26030)/44220)  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     loc = R16_INT32K_TUNE;
     diff_2 = 0;
     diffc = 0;
@@ -507,23 +508,23 @@ UINT16 Calibration_LSI( void )
     	R16_INT32K_TUNE = loc;
         R8_SAFE_ACCESS_SIG = 0;
                 
-		/* ¶ÁÈ¡µ±Ç°Öµ */
+		/* ï¿½ï¿½È¡ï¿½ï¿½Ç°Öµ */
         while(!(R8_OSC_CAL_CTRL&RB_OSC_CNT_HALT));
-        i = R16_OSC_CAL_CNT;			// ÓÃÓÚ¶ªÆú
+        i = R16_OSC_CAL_CNT;			// ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½
         while(R8_OSC_CAL_CTRL&RB_OSC_CNT_HALT);		
         while(!(R8_OSC_CAL_CTRL&RB_OSC_CNT_HALT));
-        i = R16_OSC_CAL_CNT;			// ÊµÊ±Ð£×¼ºó²ÉÑùÖµ	
+        i = R16_OSC_CAL_CNT;			// ÊµÊ±Ð£×¼ï¿½ï¿½ï¿½ï¿½ï¿½Öµ	
         k++;
         
         diff_1 = i-basev;
         
         if( diff_1 == 0 ){
-            return 0;		// Ð£×¼ÕýºÃ
+            return 0;		// Ð£×¼ï¿½ï¿½ï¿½ï¿½
         }
-        else if((diff_1*diff_2)<0){					// ´¦ÓÚÁ½µãÖ®¼ä
+        else if((diff_1*diff_2)<0){					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½
         	if((diffc == 1) || (diffc == -1) || (diffc == 0))
             {            
-                // ¶¼±ä³ÉÕýÊý
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 if( diff_2<0 )	diff_2 = ~(diff_2-1);
                 else     		diff_1 = ~(diff_1-1);
                     
@@ -533,21 +534,21 @@ UINT16 Calibration_LSI( void )
                     R16_INT32K_TUNE = loc_t;
                     R8_SAFE_ACCESS_SIG = 0;
                     
-                    return (diff_2*1000/basev);				// ·µ»ØÎó²îÖµ£¬Ç§·ÖÖ®
+                    return (diff_2*1000/basev);				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ç§ï¿½ï¿½Ö®
                 }
                 else	return(diff_1*1000/basev);	                
             }
         }
         	
-        // ±£´æÉÏÒ»´ÎÖµ	
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Öµ	
         diff_2 = diff_1;		
         loc_t = loc;        
         diffc = diff_1/CNT_STEP_K;
         loc = loc - diffc;
         if( loc == loc_t )
         {
-            if( diff_1 > 0 )	loc = loc+1;	// µ±Ç°ÆµÂÊÆ«Ð¡ 
-            else				loc = loc-1;	// µ±Ç°ÆµÂÊÆ«´ó 
+            if( diff_1 > 0 )	loc = loc+1;	// ï¿½ï¿½Ç°Æµï¿½ï¿½Æ«Ð¡ 
+            else				loc = loc-1;	// ï¿½ï¿½Ç°Æµï¿½ï¿½Æ«ï¿½ï¿½ 
         }
     }while( k<20 );	
     
@@ -557,19 +558,19 @@ UINT16 Calibration_LSI( void )
 
 /*******************************************************************************
 * Function Name  : RTCInitTime
-* Description    : RTCÊ±ÖÓ³õÊ¼»¯µ±Ç°Ê±¼ä
-* Input          : y: ÅäÖÃÊ±¼ä - Äê
+* Description    : RTCÊ±ï¿½Ó³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ç°Ê±ï¿½ï¿½
+* Input          : y: ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 					MAX_Y = BEGYEAR + 44
-					 mon: ÅäÖÃÊ±¼ä - ÔÂ
+					 mon: ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 					MAX_MON = 12
-					 d: ÅäÖÃÊ±¼ä - ÈÕ
+					 d: ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 					MAX_D = 31
 
-					 h: ÅäÖÃÊ±¼ä - Ð¡Ê±
+					 h: ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - Ð¡Ê±
 					MAX_H = 23
-				   m: ÅäÖÃÊ±¼ä - ·ÖÖÓ
+				   m: ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½
 					MAX_M = 59
-				   s: ÅäÖÃÊ±¼ä - Ãë
+				   s: ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 				  MAX_S = 59
 * Return         : None
 *******************************************************************************/
@@ -615,18 +616,18 @@ void RTC_InitTime( UINT16 y, UINT16 mon, UINT16 d, UINT16 h, UINT16 m, UINT16 s 
 
 /*******************************************************************************
 * Function Name  : RTC_GetTime
-* Description    : »ñÈ¡µ±Ç°Ê±¼ä
-* Input          : y: »ñÈ¡µ½µÄÊ±¼ä - Äê
+* Description    : ï¿½ï¿½È¡ï¿½ï¿½Ç°Ê±ï¿½ï¿½
+* Input          : y: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 					MAX_Y = BEGYEAR + 44
-					 mon: »ñÈ¡µ½µÄÊ±¼ä - ÔÂ
+					 mon: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 					MAX_MON = 12
-					 d: »ñÈ¡µ½µÄÊ±¼ä - ÈÕ
+					 d: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 					MAX_D = 31
-					 ph: »ñÈ¡µ½µÄÊ±¼ä - Ð¡Ê±
+					 ph: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - Ð¡Ê±
 					MAX_H = 23
-				   pm: »ñÈ¡µ½µÄÊ±¼ä - ·ÖÖÓ
+				   pm: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½
 					MAX_M = 59
-				   ps: »ñÈ¡µ½µÄÊ±¼ä - Ãë
+				   ps: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ - ï¿½ï¿½
 				  MAX_S = 59
 * Return         : None
 *******************************************************************************/
@@ -663,8 +664,8 @@ void RTC_GetTime( PUINT16 py, PUINT16 pmon, PUINT16 pd, PUINT16 ph, PUINT16 pm, 
 
 /*******************************************************************************
 * Function Name  : RTC_SetCycle32k
-* Description    : »ùÓÚLSE/LSIÊ±ÖÓ£¬ÅäÖÃµ±Ç°RTC ÖÜÆÚÊý
-* Input          : cyc: ÅäÖÃÖÜÆÚ¼ÆÊý³õÖµ - cycle
+* Description    : ï¿½ï¿½ï¿½ï¿½LSE/LSIÊ±ï¿½Ó£ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ç°RTC ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* Input          : cyc: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½Öµ - cycle
 					MAX_CYC = 0xA8BFFFFF = 2831155199
 * Return         : None
 *******************************************************************************/
@@ -685,9 +686,9 @@ void RTC_SetCycle32k( UINT32 cyc )
 
 /*******************************************************************************
 * Function Name  : RTC_GetCycle32k
-* Description    : »ùÓÚLSE/LSIÊ±ÖÓ£¬»ñÈ¡µ±Ç°RTC ÖÜÆÚÊý
+* Description    : ï¿½ï¿½ï¿½ï¿½LSE/LSIÊ±ï¿½Ó£ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ç°RTC ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * Input          : None
-* Return         : ·µ»Øµ±Ç°ÖÜÆÚÊý£¬MAX_CYC = 0xA8BFFFFF = 2831155199
+* Return         : ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MAX_CYC = 0xA8BFFFFF = 2831155199
 *******************************************************************************/
 UINT32 RTC_GetCycle32k( void )
 {
@@ -702,7 +703,7 @@ UINT32 RTC_GetCycle32k( void )
 
 /*******************************************************************************
 * Function Name  : RTC_TMRFunCfg
-* Description    : RTC¶¨Ê±Ä£Ê½ÅäÖÃ
+* Description    : RTCï¿½ï¿½Ê±Ä£Ê½ï¿½ï¿½ï¿½ï¿½
 * Input          : t: 
 					refer to RTC_TMRCycTypeDef
 * Return         : None
@@ -718,8 +719,8 @@ void RTC_TMRFunCfg( RTC_TMRCycTypeDef t )
 
 /*******************************************************************************
 * Function Name  : RTC_TRIGFunCfg
-* Description    : RTCÊ±¼ä´¥·¢Ä£Ê½ÅäÖÃ
-* Input          : cyc: Ïà¶Ôµ±Ç°Ê±¼äµÄ´¥·¢¼ä¸ôÊ±¼ä£¬»ùÓÚLSE/LSIÊ±ÖÓÖÜÆÚÊý
+* Description    : RTCÊ±ï¿½ä´¥ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+* Input          : cyc: ï¿½ï¿½Ôµï¿½Ç°Ê±ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½LSE/LSIÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * Return         : None
 *******************************************************************************/
 void RTC_TRIGFunCfg( UINT32 cyc )
@@ -739,8 +740,8 @@ void RTC_TRIGFunCfg( UINT32 cyc )
 
 /*******************************************************************************
 * Function Name  : RTC_ModeFunDisable
-* Description    : RTC Ä£Ê½¹¦ÄÜ¹Ø±Õ
-* Input          : m: ÐèÒª¹Ø±ÕµÄµ±Ç°Ä£Ê½
+* Description    : RTC Ä£Ê½ï¿½ï¿½ï¿½Ü¹Ø±ï¿½
+* Input          : m: ï¿½ï¿½Òªï¿½Ø±ÕµÄµï¿½Ç°Ä£Ê½
 * Return         : None
 *******************************************************************************/
 void RTC_ModeFunDisable( RTC_MODETypeDef m )
@@ -758,12 +759,12 @@ void RTC_ModeFunDisable( RTC_MODETypeDef m )
 
 /*******************************************************************************
 * Function Name  : RTC_GetITFlag
-* Description    : »ñÈ¡RTCÖÐ¶Ï±êÖ¾
+* Description    : ï¿½ï¿½È¡RTCï¿½Ð¶Ï±ï¿½Ö¾
 * Input          : f: 
 					refer to RTC_EVENTTypeDef
-* Return         : ÖÐ¶Ï±êÖ¾×´Ì¬:
-					0     -  	Î´·¢ÉúÊÂ¼þ
-				   (!0)   -  	·¢ÉúÊÂ¼þ
+* Return         : ï¿½Ð¶Ï±ï¿½Ö¾×´Ì¬:
+					0     -  	Î´ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+				   (!0)   -  	ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 *******************************************************************************/
 UINT8 RTC_GetITFlag( RTC_EVENTTypeDef f )
 {
@@ -775,7 +776,7 @@ UINT8 RTC_GetITFlag( RTC_EVENTTypeDef f )
 
 /*******************************************************************************
 * Function Name  : RTC_ClearITFlag
-* Description    : Çå³ýRTCÖÐ¶Ï±êÖ¾
+* Description    : ï¿½ï¿½ï¿½RTCï¿½Ð¶Ï±ï¿½Ö¾
 * Input          : f: 
 					refer to RTC_EVENTTypeDef
 * Return         : None

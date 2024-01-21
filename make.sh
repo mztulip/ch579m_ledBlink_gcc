@@ -20,3 +20,7 @@ $file2
 file3="$TOOLCHAIN_GCC startup.c $INLCUDES -o build/startup.o $GCC_OPTIONS"
 echo $file3
 $file3
+
+file4="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_clk.c $INLCUDES -o build/CH57x_clk.o $GCC_OPTIONS"
+echo $file4
+$file4
