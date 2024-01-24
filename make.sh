@@ -1,6 +1,13 @@
 #/bin/bash
 set -e
 
+if [ $1 = "--ram" ]; then
+    LINKER_SCRIPT="ch579_ram.lds"
+    
+else
+    LINKER_SCRIPT="ch579.lds"
+fi
+
 TOOLCHAIN="/home/tulip/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-"
 TOOLCHAIN_GCC=$TOOLCHAIN"gcc"
 TOOLCHAIN_SIZE=$TOOLCHAIN"size"
@@ -12,7 +19,7 @@ echo $TOOLCHAIN_GCC
 # -fdata-sections
 #-ffunction-sections => Place each function or data item into its own section in the output file if the target supports arbitrary sections. The name of the function or the name of the data item determines the section’s name in the output file. 
 # -mthumb => Select between generating code that executes in ARM and Thumb states
-GCC_OPTIONS="-c -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m0"
+GCC_OPTIONS="-c -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m0 -g"
 INLCUDES="-I StdPeriphDriver/inc/ -I CMSIS/Include/"
 
 file1="$TOOLCHAIN_GCC Main.c $INLCUDES -o build/main.o $GCC_OPTIONS"
@@ -39,7 +46,7 @@ file6="$TOOLCHAIN_GCC StdPeriphDriver/CH57x_pwr.c $INLCUDES -o build/CH57x_pwr.o
 echo $file6
 $file6
 
-linker="$TOOLCHAIN_GCC build/*.o -nostartfiles -Tch579.lds -Wl,--gc-sections -o output.elf  -Xlinker -Map=output.map"
+linker="$TOOLCHAIN_GCC build/*.o -nostartfiles -T$LINKER_SCRIPT -Wl,--gc-sections -o output.elf  -Xlinker -Map=output.map"
 echo $linker
 $linker
 
